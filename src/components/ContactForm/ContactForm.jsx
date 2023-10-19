@@ -2,17 +2,25 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 import css from './ContactForm.module.css';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactsReducer';
 
-export const ContactForm = ({ onSubmit, nameAlreadyExists }) => {
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
+  const dispatch = useDispatch()
+
   const contacts = useSelector(state=> state.contacts)
 
-  // const reset = () => {
-  //   setName('');
-  //   setNumber('');
-  // };
+  const reset = () => {
+    setName('');
+    setNumber('');
+  };
+
+    const nameAlreadyExists = contact => {
+    return contacts.some(({ name }) => name === contact);
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,7 +28,8 @@ export const ContactForm = ({ onSubmit, nameAlreadyExists }) => {
       alert(`${name} already exists!`);
       return;
     }
-    onSubmit({ name, number });
+    dispatch(addContact(name, number))
+    reset()
    
   };
   return (
