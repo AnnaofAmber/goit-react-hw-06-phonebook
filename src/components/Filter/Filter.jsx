@@ -1,6 +1,18 @@
 import css from './Filter.module.css';
 
-export const Filter = ({ filter, onChange }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilter } from 'redux/selectors';
+import { filterContact } from 'redux/filterSlice';
+
+
+
+export const Filter = () => {
+
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
+  const handleFilterChange = event => {
+    return dispatch(filterContact(event.target.value));
+  };
   return (
     <div className={css.filter}>
       <label className={css.label} htmlFor="search">
@@ -12,7 +24,7 @@ export const Filter = ({ filter, onChange }) => {
         name="filter"
         value={filter}
         type="text"
-        onChange={e => onChange(e.target.value)}
+        onChange={handleFilterChange}
       />
     </div>
   );

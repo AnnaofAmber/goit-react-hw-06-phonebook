@@ -2,12 +2,23 @@ import css from './ContactList.module.css';
 import { Contact } from 'components/Contact/Contact';
 
 import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { getContacts, getFilter } from 'redux/selectors';
+const onFilteredContacts = (contacts, filter) => {
+  return contacts.filter(contact =>
+    contact.name.includes(filter)
+  );
+};
 
 export const ContactList = () => {
-  const contacts = useSelector(state=> state.contacts)
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
+  const filteredContacts = onFilteredContacts(contacts, filter);
+
+
+ 
   return (
     <ul className={css.list}>
-      {contacts.map(contact => (
+      {filteredContacts.map(contact => (
           <Contact
           id={contact.id}
             key={contact.id}

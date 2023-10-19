@@ -4,6 +4,7 @@ import css from './App.module.css';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Contacts } from './Contacts/Contacts';
 import { ContactList } from './ContactList/ContactList';
+import { Filter } from './Filter/Filter';
 
 export const App = () => {
 // const contacts = useSelector(state=> state.contacts)
@@ -54,6 +55,7 @@ export const App = () => {
       <h1 className={css.title}>Phonebook</h1>
       <ContactForm />
       <Contacts title="Contacts">
+        <Filter/>
         <ContactList/>
       </Contacts>
     </div>
