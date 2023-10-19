@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 import css from './ContactForm.module.css';
 
@@ -6,10 +7,12 @@ export const ContactForm = ({ onSubmit, nameAlreadyExists }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const reset = () => {
-    setName('');
-    setNumber('');
-  };
+  const contacts = useSelector(state=> state.contacts)
+
+  // const reset = () => {
+  //   setName('');
+  //   setNumber('');
+  // };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -18,7 +21,7 @@ export const ContactForm = ({ onSubmit, nameAlreadyExists }) => {
       return;
     }
     onSubmit({ name, number });
-    reset();
+   
   };
   return (
     <form className={css.contactForm} onSubmit={handleSubmit}>
