@@ -10,7 +10,7 @@ const initialState = {
       { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
     ],
   ],
-  filter: '',
+
 };
 
 const contactsSlice = createSlice({
@@ -37,18 +37,8 @@ const contactsSlice = createSlice({
   },
 });
 
-// const filterSlice = createSlice({
-//     name: 'filter',
-//     initialState: initialState.filter,
-//     reducers:{
-//         filterContact(state,action){
-//             return(state = action.payload)
-//         }
-//     }
-// })
+
 
 export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
 
-// export const {filterContact} = filterSlice.action
-// export const filterReducer = filterSlice.reducer
