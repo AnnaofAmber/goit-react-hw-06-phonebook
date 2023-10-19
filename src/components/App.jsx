@@ -1,4 +1,4 @@
-import {useSelector } from 'react-redux/es/hooks/useSelector';
+// import {useSelector } from 'react-redux/es/hooks/useSelector';
 import css from './App.module.css';
 
 import { ContactForm } from './ContactForm/ContactForm';
@@ -6,7 +6,7 @@ import { Contacts } from './Contacts/Contacts';
 import { ContactList } from './ContactList/ContactList';
 
 export const App = () => {
-const contacts = useSelector(state=> state.contacts)
+// const contacts = useSelector(state=> state.contacts)
 
   // const [contacts, setContacts] = useState(() => {
   //   const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
