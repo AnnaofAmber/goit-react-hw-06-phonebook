@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
-import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector';
+import {useSelector } from 'react-redux/es/hooks/useSelector';
 import css from './App.module.css';
 
 import { ContactForm } from './ContactForm/ContactForm';
 import { Contacts } from './Contacts/Contacts';
-import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
 export const App = () => {

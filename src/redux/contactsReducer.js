@@ -17,9 +17,17 @@ const initialState = {
         name: 'contacts',
         initialState: initialState.contacts,
         reducers:{
-            addContact(state, action){
+            addContact:
+            {
+                reducer(state, action){
                 state.contacts.push(action.payload)
             },
+                prepare(name, number){
+                    return {
+                        payload
+                    }
+                }
+        },
             deleteContact(state, action){
                 state.contacts = state.filter(contact => contact.id !== action.payload)
             }
@@ -27,18 +35,18 @@ const initialState = {
 
     })
 
-    const filterSlice = createSlice({
-        name: 'filter',
-        initialState: initialState.filter,
-        reducers:{
-            onFilter(state,action){
-                return(state = action.payload)
-            }
-        }
-    })
+    // const filterSlice = createSlice({
+    //     name: 'filter',
+    //     initialState: initialState.filter,
+    //     reducers:{
+    //         filterContact(state,action){
+    //             return(state = action.payload)
+    //         }
+    //     }
+    // })
 
     export const {addContact, deleteContact} = contactsSlice.actions
-
     export const contactsReducer = contactsSlice.reducer
 
-    export const {}
+    // export const {filterContact} = filterSlice.action
+    // export const filterReducer = filterSlice.reducer
