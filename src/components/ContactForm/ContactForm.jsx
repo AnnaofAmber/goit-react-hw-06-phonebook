@@ -9,16 +9,16 @@ export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const contacts = useSelector(state=> state.contacts)
+  const contacts = useSelector(state => state.contacts);
 
   const reset = () => {
     setName('');
     setNumber('');
   };
 
-    const nameAlreadyExists = contact => {
+  const nameAlreadyExists = contact => {
     return contacts.some(({ name }) => name === contact);
   };
 
@@ -28,9 +28,8 @@ export const ContactForm = () => {
       alert(`${name} already exists!`);
       return;
     }
-    dispatch(addContact(name, number))
-    reset()
-   
+    dispatch(addContact(name, number));
+    reset();
   };
   return (
     <form className={css.contactForm} onSubmit={handleSubmit}>

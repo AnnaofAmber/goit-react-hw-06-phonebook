@@ -2,9 +2,9 @@ import { useDispatch } from 'react-redux';
 import css from './Contact.module.css';
 import { deleteContact } from 'redux/contactsSlice';
 
-export const Contact = ({ id, name, number}) => {
+export const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
-  const onDelete = () => dispatch(deleteContact(id))
+  const onDelete = () => dispatch(deleteContact(id));
   return (
     <li className={css.item}>
       {name}: {number}
