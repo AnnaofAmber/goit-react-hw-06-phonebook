@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { contactsReducer } from './contactsSlice';
+import { booksReducer } from './booksSlice';
 import {
   persistStore,
   persistReducer,
@@ -11,17 +11,19 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { filterReducer } from './filterSlice';
+import { filterReducer } from './filterBooksSlice';
+import { readFilterReducer } from './readFilterSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['contacts'],
+  whitelist: ['books'],
 };
 
 const rootReducer = combineReducers({
-  contacts: contactsReducer,
+  books: booksReducer,
   filter: filterReducer,
+  isRead: readFilterReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
